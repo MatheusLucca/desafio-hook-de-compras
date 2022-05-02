@@ -31,15 +31,13 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
     return [];
   });
-
   const prevCartRef = useRef<Product[]>();
 
   useEffect(() =>{
     prevCartRef.current = cart;
-    
   })
 
-  const cartPreviousValue = prevCartRef.current ?? cart
+  const cartPreviousValue = prevCartRef.current ?? cart;
 
   useEffect(() =>{
     if(cartPreviousValue !== cart){
@@ -73,7 +71,6 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
           updatedCart.push(newProduct)
        }
        setCart(updatedCart);
-       
     } catch {
       toast.error('Erro na adição do produto');
     }
@@ -87,7 +84,6 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
       if(productIndex >=0){
         updatedCart.splice(productIndex, 1);
         setCart(updatedCart)
-       
       } else{
         throw Error();
       }
@@ -119,7 +115,6 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
       if (productExists){
         productExists.amount = amount;
         setCart(updatedCart);
-       
       } else{
         throw Error();
       }
